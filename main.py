@@ -26,7 +26,7 @@ def pars(file_docx):
         txt_r += "\t\t<tr>\n"
         for cell in row.cells:  # просматриваем ячейки строки
             txt_r += txt_h
-            for par in cell.paragraphs:  # просматриваем абзацы ячейки
+            for c, par in enumerate(cell.paragraphs):  # просматриваем абзацы ячейки
                 txt_run = ""
                 for run in par.runs:  # просматриваем части абзаца
                     color_d = str(run.font.color.rgb)
@@ -36,7 +36,8 @@ def pars(file_docx):
                         txt_run0 = "<span style='color:#" + color_d + ";'>" + run.text + "</span>"
                     txt_run += txt_run0
                 txt_r += txt_run
-                txt_r += "<br>"
+                if c < (len(cell.paragraphs) - 1):
+                    txt_r += "</br>"
             txt_r += "</td>\n"
         txt_r += "\t\t</tr>\n"
     txt_r += "\t</tbody>\n</table>\n</div>"
