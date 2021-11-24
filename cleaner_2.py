@@ -37,7 +37,7 @@ def pars(file_docx):
                     txt_run += txt_run0
                 txt_r += txt_run
                 if c < (len(cell.paragraphs) - 1):
-                    txt_r += "</br>"
+                    txt_r += "<br>"
             txt_r += "</td>\n"
         txt_r += "\t\t</tr>\n"
     txt_r += "\t</tbody>\n</table>\n</div>"
