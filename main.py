@@ -56,11 +56,11 @@ while True:  # Event Loop
         else:
             f_name = sys.argv[1]
         window['-OUTPUT-'].update(f_name)
-        if not f_name:
-            Sg.popup("Cancel", "Не выбрали файл")
-            raise SystemExit("Cancelling: no filename supplied")
+    if not f_name:
+        Sg.popup("Cancel", "Не выбрали файл")
+        # raise SystemExit("Cancelling: no filename supplied")
         # fileR = f_name  # Берем название и путь файла для обработки
-    if event == 'Конвертировать':
+    elif event == 'Конвертировать':
         text_t = pars(f_name)
         Sg.popup_scrolled(text_t, title="Текст после очистки", size=(120, 40))
         Sg.clipboard_set(text_t)
