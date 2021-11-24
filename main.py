@@ -45,7 +45,7 @@ def pars(file_docx):
 
 layout = [[Sg.Text('Файл расписания: '), Sg.Text(size=(25, 1), key='-OUTPUT-')],
           [Sg.Button('Выбрать файл', size=(20, 2)), Sg.Button('Конвертировать', size=(20, 2))]]
-window = Sg.Window('Чистильщик', layout)
+window = Sg.Window('Конвертер расписания', layout)
 while True:  # Event Loop
     event, values = window.read()
     if event == Sg.WIN_CLOSED or event == 'Exit':
@@ -58,8 +58,6 @@ while True:  # Event Loop
         window['-OUTPUT-'].update(f_name)
     if not f_name:
         Sg.popup("Cancel", "Не выбрали файл")
-        # raise SystemExit("Cancelling: no filename supplied")
-        # fileR = f_name  # Берем название и путь файла для обработки
     elif event == 'Конвертировать':
         text_t = pars(f_name)
         Sg.popup_scrolled(text_t, title="Текст после очистки", size=(120, 40))
